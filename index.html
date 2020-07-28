@@ -15,21 +15,30 @@
   <body>
     <div id="root"></div>
     <script>
-      class App extends React.Component {
+      'use strict';
+      const { Component } = React;
+      class App extends Component {
         constructor(props) {
           super(props);
           this.state = {
             counter: 0,
+            step: 1,
           };
         }
 
-        decrement() {
-          alert('-');
-        }
+        decrement = () => {
+          const { counter, step } = this.state;
+          this.setState({
+            counter: counter - step,
+          });
+        };
 
-        increment() {
-          alert('+');
-        }
+        increment = () => {
+          const { counter, step } = this.state;
+          this.setState({
+            counter: counter + step,
+          });
+        };
 
         render() {
           const { counter } = this.state;
