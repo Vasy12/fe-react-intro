@@ -40,9 +40,21 @@
           });
         };
 
+        handleStepInput = e => {
+          const newStep = Number(e.target.value);
+          this.setState({
+            step: newStep,
+          });
+        };
+
         render() {
-          const { counter } = this.state;
+          const { counter, step } = this.state;
           const headingElem = React.createElement('h1', null, counter);
+          const stepInput = React.createElement('input', {
+            type: 'number',
+            value: step,
+            onChange: this.handleStepInput,
+          });
           const incrementBtn = React.createElement(
             'button',
             {
@@ -58,12 +70,11 @@
             '-'
           );
 
-          return React.createElement(React.Fragment, null, headingElem, decrementBtn, incrementBtn); // React.js elem
+          return React.createElement(React.Fragment, null, headingElem, stepInput, decrementBtn, incrementBtn); // React.js elem
         }
       }
 
       const appElem = React.createElement(App);
-
       ReactDOM.render(appElem, document.getElementById('root')); // ReactDOM
     </script>
   </body>
